@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>基本资料 - 会员中心 -{maccms:name}</title>
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" id="viewport" name="viewport">
+<meta name="keywords" content="{maccms:keywords}"/>
+<meta name="description" content="{maccms:description}"/>
+<link href="{maccms:path}template/user/css/base.css" type="text/css" rel="stylesheet"/>
+<link href="{maccms:path}template/user/css/u.css" type="text/css" rel="stylesheet"/>
+<link href="{maccms:path}template/user/css/i.css?20120915" type="text/css" rel="stylesheet"/>
+<script>var SitePath='{maccms:path}',SiteAid='{maccms:siteaid}',SiteTid='{maccms:sitetid}',SiteId='{maccms:siteid}';</script>
+<script src="{maccms:path}js/jquery.js"></script>
+<script src="{maccms:path}js/common.js"></script>
+</head>
+<body>
+{head}
+<link rel="stylesheet" type="text/css" href="tpl/images/style.css" />
+<nav class="subNav globalPadding" id="nav_menu" style="display:block">
+  <div class="con clearfix">
+    <p>
+    <a href="index.php?m=user-index.html" class="cur">首页</a>
+    <a href="index.php?m=user-info.html">信息</a>
+    <a href="index.php?m=user-fav.html">收藏</a>
+    <a href="index.php?m=user-plays.html">播放</a>
+    <a href="index.php?m=user-downs.html">下载</a>
+    <a href="index.php?m=user-pay.html">充值</a>
+    <a href="index.php?m=user-upgrade.html">升级</a>
+
+    </p>
+  </div>
+</nav>
+
+<div class="user_box">
+<ul>
+<li><label>用户名：</label> {u_name}</li>
+<li><label>所属会员組：</label> {ug_name}</li>
+{if-A:"{maccms:usergroupid}"="4"}
+{else-A}
+<li><label>VIP周期：</label> 从 {u_start} 到 {u_end}</li>
+{endif-A}
+<li><label>QQ号码：</label> {u_qq}</li>
+<li><label>Email地址：</label> {u_email}</li>
+<li><label>注册时间：</label> {u_regtime}</li>
+<li><label>登录IP：</label> {u_loginip}</li>
+<li><label>登录时间：</label> {u_logintime}</li>
+<li><label>账号积分：</label> {u_points}</li>
+<li><label>推广次数：</label> {u_extend}</li>
+<li><label>推广链接：</label> <input type="text" value="http://{maccms:url}/index.php?m=user-tg-uid-{u_id}.html" style="width:250px"></li>
+<br>
+<li><label>说明：</label> 每介绍一个会员可以获得2个积分。</li>
+
+
+</ul>
+</div>
+
+
+<div class="footer">Processed in: 0.015 second(s), 0  queries 2.52 mb Mem On.</div>
+</body>
+</html>

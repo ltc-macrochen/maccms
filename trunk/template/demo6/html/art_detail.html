@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>[art:name] [art:subname] - {maccms:name}</title>
+<meta name="keywords" content="[art:name],{maccms:name}" />
+<meta name="description" content="[art:name],{maccms:name}" />
+{maccms:include}
+</head>
+<body>
+<header>
+    <div id="navbar">
+		<a href="#" class="menubtn"><span></span><span></span><span></span><span></span></a>
+		<h2 class="sitetitle">[art:colorname]</h2>
+		{maccms:head}
+    </div>
+    <div class="overlay"></div><div class="clear"></div>
+</header>
+
+		
+<section class="menuNavList1 mod0">
+	<ul> 
+<li {if-A:{maccms:siteaid}=20}class="on"{endif-A}><a href="http://{maccms:url}{maccms:link_index_art}">全部</a></li>
+{maccms:menu  order=asc type=1,2 table=art}
+          <li {if-A:{maccms:curarttypeid}=[menu:id]}class="on"{endif-A}><a href="[menu:link]" title="[menu:name]">[menu:name]</a></li>{/maccms:menu}
+		
+	</ul>
+<ul></ul>
+</section>
+
+<section class="detail-content">
+	<div class="detail-content-container">
+		<div class="detail-content-header">
+			<h1>[art:colorname]</h1>
+			<div class="header-info">
+				<span>[art:author]</span>
+				
+		                 
+			</div>
+		</div>
+		<div class="detail-content-content">[art:content]</div>
+	</div>
+</section>
+<section class="menuNavList1">
+	<ul>
+		<li>[art:prelink]</li>
+</ul>
+</section>
+<section class="menuNavList1">
+	<ul>
+		<li>[art:nextlink]</li>
+</ul><ul></ul>
+</section></br>
+<section class="detail-share-container">
+	<p>分享这篇文章</p>
+	<div class="share-content">
+		<div class="share-item weibo" data-app="weibo"><span>新浪微博</span></div>
+		<div class="share-item renren" data-app="renren"><span>人人网</span></div>
+		<div class="share-item qzone" data-app="qzone"><span>QQ空间</span></div>
+		<div class="share-item tweibo" data-app="tweibo"><span>腾讯微博</span></div>
+		<div class="share-item douban" data-app="douban"><span>豆瓣网</span></div>
+	</div>
+</section>
+
+
+
+{maccms:foot}
+</body>
+</html>
+
+

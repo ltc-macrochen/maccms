@@ -1,0 +1,185 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{maccms:name}-新时代的视觉体验</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+ <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="{maccms:path_tpl}css/base.css?t=2">
+<link rel="stylesheet" href="{maccms:path_tpl}css/index.css?t=42">
+<script src="{maccms:path_tpl}js/jquery.2.1.4.min.js"></script>	
+<script src="{maccms:path_tpl}js/index.js?t=7"></script></head>
+<body>
+{maccms:head}
+	
+	 
+<div class="ps_11"></div><div style="clear:both"></div><div class="video-body">
+	<div class="video-head">
+		<div class="video-title">搜索"{page:key}"结果</div>
+	</div>
+	<div class="video-list">
+	
+	
+			 {maccms:vod pagesize=12 by=time order=desc}
+			<div class="video-item"><a href="[vod:playlink]">
+			<div class="log"><img class="lazy" data-original="[vod:pic]" src="{maccms:path_tpl}img/loading.gif" alt="[vod:name]" title="[vod:name]" onerror="this.src='{maccms:path_tpl}img/backlogo.png'"/></div>
+			<div class="title">[vod:name]</div>
+			<div class="xin-level">
+				<span></span><span></span><span></span><span></span><span></span>
+			</div>
+			<div class="video-foot">
+				<div class="time">[vod:addtime style=yy-m-d]</div>
+				<div class="view">[vod:hits]观看</div>
+			</div>
+		</a></div>
+		 		{/maccms:vod}
+				
+			</div>
+</div>
+
+<div class="video-more">
+	<div class="video-title"><ul class="nextPage">{maccms:pages len=6}</ul></div>
+	
+</div>
+
+{maccms:foot}
+<script type="text/javascript" src="{maccms:path_tpl}js/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+
+	function createA(options){
+		var ops = getStyleStr(options);
+		var a = $('<a />');
+		a.attr(ops);
+		return a;
+	}
+	function createImg(options){
+		var ops = getStyleStr(options);
+		var img = $('<img />');
+		img.attr(ops);
+		return img;
+	}
+	function getStyleStr(options){
+		var ops = {style:{}};
+		$.extend(ops,options);
+		var styleStr = '';
+		if(ops && ops.style){
+			$.each(ops.style,function(i,j){
+				styleStr += i+':'+j+';';
+			});
+			ops.style = styleStr;
+		}
+		return ops;
+	}
+	function showAds(){
+		if(ps){
+			$.each(ps,function(i,j){
+				var adsObj = $('.ps_'+i);
+				var fragment = document.createDocumentFragment();
+				if(adsObj && adsObj.length > 0){
+					var style = {};
+					if(j.position != ''){
+						var width = 0;
+						if(j.width.indexOf('%')>=0 || j.width=='auto'){
+							width = j.width;
+						}else{
+							width = j.width+'px';
+						}
+						var height = 0;
+						if(j.height.indexOf('%') >= 0 || j.height =='auto'){
+							height = j.height;
+						}else{
+							height = j.height+'px';
+						}
+						style = {
+							'position':'fixed',
+							'z-index':99999,
+							'width':width,
+							'height':height
+						};
+						if(j.position_top != ''){
+							style.top = (j.position_top.indexOf('%') >= 0) ? j.position_top : j.position_top+'px';
+						}else if(j.position_bottom != ''){
+							style.bottom = (j.position_bottom.indexOf('%') >= 0) ? j.position_bottom : j.position_bottom+'px';
+						}else{
+							style.top = 0;
+						}
+						if(j.position == 'left'){
+							style.left = (j.position_left_right.indexOf('%') >= 0) ? j.position_left_right : j.position_left_right+'px';
+						}else if(j.position == 'right'){
+							style.right = (j.position_left_right.indexOf('%') >= 0) ? j.position_left_right : j.position_left_right+'px';
+						}
+						style.float = j.position;
+						var o = getStyleStr({'style':style});
+						adsObj.attr(o);
+					}
+					var width = adsObj.width();
+					var mcounts = Math.floor(width / j.width);
+					
+					if(j.ads && j.ads.length > 0){
+						$.each(j.ads,function(si,sj){
+							var tmps = sj.margin.split(' ');
+							var tmpsLen = tmps.length;
+							var margin = '';
+							for(var f=0;f<tmpsLen;f++){
+								if(tmps[f].indexOf('%') < 0 && parseInt(tmps[f]) > 0){
+									margin += parseInt(tmps[f])+'px ';
+								}else{
+									margin += tmps[f]+' ';
+								}
+							}
+							var ops = {
+								'display':'block',
+								'float':'left',
+								'margin':margin
+							};
+							if(j.position =='' && si == (mcounts -1)){
+								ops.margin = '10px 0 0 0';
+							}
+							var xa = null;
+							if(sj.isbtn == 1){
+								ops.position = 'relative';
+								var xaops = {'display':'block','position':'absolute','top':'5%','right':'3%','width':'auto','height':'auto','margin':0,'background':'#192332','color':'white','padding':'2px 5px','font-size':'5%'};
+								xa = createA({'style':xaops});
+								xa.html('X');
+								xa.click(function(){
+									$(this).parent().hide();
+									return false;
+								});
+							}
+							var a = createA({'style':ops,'title':sj.name,'href':sj.url,'target':'_blank'});
+							if(xa){
+								a.append(xa);
+							}
+							var imgops = {
+							   'width':(j.width.indexOf('%') >= 0 ) ? '100%' : j.width+'px',
+							   'height':(j.height.indexOf('%')>=0)? '100%' : j.height+'px'
+							};
+							var src = sj.media ? sj.media : sj.relogopic;
+							var img = createImg({'style':imgops,'alt':sj.name,'src':src});
+							a.append(img);
+							fragment.appendChild(a[0]);
+						});
+						adsObj.append(fragment);
+					}
+				}
+			});
+		}
+	}
+$(function(){
+	$.getScript("/ads/data.js?v=3").done(function(r,s){
+		showAds();
+	});
+	$(".ntc-btn").click(function(){
+		$(".notice").hide(500);
+	});
+	$('img.lazy').lazyload();
+});
+</script>
+
+</body>
+</html>

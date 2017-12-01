@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>{maccms:name}</title>
+    <meta name="keywords" content="{maccms:keywords}"/>
+    <meta name="description" content="{maccms:description}"/>
+    {maccms:include}
+</head>
+<body>
+{maccms:head}
+<div class="wrap container">
+    <!-- top-ad -->
+    <div class="money_all">
+        <!--<script type="text/javascript" language="javascript" src="{maccms:path_ads}all-top.js"></script>-->
+    </div>
+    <!-- top-ad -->
+
+    <div class="ibox float-e-margins m-video-box">
+        <div class="ibox-title">
+            <h4>最新视频</h4>
+        </div>
+        <div class="ibox-content row">
+            {maccms:matrix type=5,6,7,8,9,10}
+            {maccms:vod type=[matrix:id] num=20 order=desc by=time}
+            <div class="col-sm-6 col-md-3 col-lg-2 m-col-item">
+                <a href="/?m=vod-play-id-[vod:id]-src-1-num-1.html">
+                    <div class="thumbnail">
+                        <img src="[vod:pic]" alt="[vod:name]" class="lazy"/>
+                        <div class="caption text-center">
+                            <h5 class="v-list-title">
+                                <label class="">[新]</label>
+                                [vod:name]
+                            </h5>
+                            <div class="form-control" style="border:none;">
+                                <div class="pull-left form-inline">
+                                    <i class="glyphicon glyphicon-time"></i>&nbsp;
+                                    [vod:duration]
+                                </div>
+                                <div class="pull-right form-inline">
+                                    <i class="glyphicon glyphicon-eye-open"></i>
+                                    <span>[vod:hits]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {/maccms:vod}
+            {/maccms:matrix}
+        </div>
+    </div>
+
+    <!--<div class="row">-->
+        <!--{maccms:matrix type=5,6,7,8,9,10}-->
+        <!--{maccms:vod type=[matrix:id] num=20 order=desc by=time}-->
+        <!--<div class="col-sm-6 col-md-3 col-lg-2">-->
+            <!--<a href="[vod:link]">-->
+                <!--<div class="thumbnail">-->
+                    <!--<img src="[vod:pic]" alt="[vod:name]" >-->
+                    <!--<div class="caption text-center">-->
+                        <!--<h5 class="v-list-title">-->
+                            <!--<label class="">[新]</label>-->
+                            <!--[vod:name]-->
+                        <!--</h5>-->
+                        <!--<div class="form-control" style="border:none;">-->
+                            <!--<div class="pull-left form-inline">-->
+                                <!--<i class="glyphicon glyphicon-time"></i>&nbsp;-->
+                                <!--[vod:duration]-->
+                            <!--</div>-->
+                            <!--<div class="pull-right form-inline">-->
+                                <!--<i class="glyphicon glyphicon-eye-open"></i>-->
+                                <!--<span>[vod:hits]</span>观看-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</a>-->
+        <!--</div>-->
+        <!--{/maccms:vod}-->
+        <!--{/maccms:matrix}-->
+    <!--</div>-->
+
+    <!-- bottom-ad -->
+    <div class="box mb">
+        <!--<script type="text/javascript" language="javascript" src="{maccms:path_ads}index903.js"></script>-->
+    </div>
+    <!-- /bottom-ad -->
+
+    <div class="money_all">
+        <!--<script type="text/javascript" language="javascript" src="{maccms:path_ads}all-bottom.js"></script>-->
+    </div>
+    <div class="flink mb b">
+        <h4>友情链接</h4>
+        <ul>
+            {maccms:link type=font}
+            <li><a href="[link:link]" target="_blank">[link:name]</a></li>
+            {/maccms:link}
+        </ul>
+    </div>
+    <!--/Flink-->
+
+</div>
+<!--/Wrap-->
+{maccms:foot}
+<!--/Footer-->
+</body>
+</html>

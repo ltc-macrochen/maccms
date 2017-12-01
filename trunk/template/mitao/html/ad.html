@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0041)http://www.yytv.wang/huancunguanggao.html -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>无标题文档</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 1);
+        }
+        td {
+            font-size: 12px;
+            line-height: 25px;
+            font-family: Arial black, sans-serif;
+        }
+    </style>
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="99%">
+    <tbody>
+    <tr>
+        <td align="center" valign="middle">
+            <p></p>
+            <p style="color: #fff">
+                请稍等，离广告结束还有<span id="djs" style="color:#FFDD00">10</span>秒
+            </p>
+            <p><img src="/123.gif" width="260" height="260" alt="loading"/></p>
+            <p><a href="{maccms:path_tpl}images/p_vmodel.png" target="_blank"><img src="" alt=""/></a></p>
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+<!--<audio autoplay=""><source src=""></audio>-->
+<script type="text/javascript">
+    document.getElementById('djs').innerHTML=10;
+    settime();
+    function settime(){//前置广告倒计时
+        var nowT=parseInt(document.getElementById('djs').innerHTML);
+        if(nowT>0){
+            frontTime=true;
+            document.getElementById('djs').innerHTML=nowT-1;
+            setTimeout('settime()',1000)
+        } else {
+            closeWebPage();
+        }
+    }
+    function closeWebPage(){
+        if (navigator.userAgent.indexOf("MSIE") > 0) {//close IE
+            if (navigator.userAgent.indexOf("MSIE 6.0") > 0) {
+                window.opener = null;
+                window.close();
+            } else {
+                window.open('', '_top');
+                window.top.close();
+            }
+        }
+        else if (navigator.userAgent.indexOf("Firefox") > 0) {//close firefox
+            window.location.href = 'about:blank ';
+        } else {//close chrome;It is effective when it is only one.
+            window.opener = null;
+            window.open('', '_self');
+            window.close();
+        }
+    }
+</script>
+</body>
+</html>

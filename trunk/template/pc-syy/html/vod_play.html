@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>正在播放 [vod:name] [vod:playname]</title>
+    <meta name="Keywords" content="[vod:name][vod:playname]免费在线观看,[vod:name]下载"/>
+    <meta name="description" content="[vod:name][vod:playname]免费在线观看,[vod:name]下载"/>
+    {maccms:include}
+</head>
+<body>
+{maccms:head}
+
+<!-- 正文 -->
+<div class="detail">
+    <div class="width1200">
+        {maccms:load menu.html}
+        <div class="detail_right">
+            <div class="detail_right_title ps_1"></div>
+            <div style="clear:both;"></div>
+            <div class="detail_right_title ps_2"></div>
+            <div class="detail_right_title ps_9"></div>
+            <div class="detail_right_title ps_7"></div>
+            <div class="detail_right_title ps_8"></div>
+            <div class="detail_right_tab"
+                 style="overflow: hidden; background: #fff; margin-top:12px; padding-left:10px;">
+                <div class="gc_vidoe_nav">[vod:textlink] [vod:playname]</div>
+                <div class="gc_video_content">
+                    <div class="gc_vodeo_left">
+                        <div class="play" style="text-align:center;position:relative;background-color:#000;">
+                            [vod:playerinfo][vod:player]
+                            <div id="a1"></div>
+                        </div>
+                        <div class="watch">
+                            <span class="title">[vod:name]</span>
+                            <span class="people"><em>[vod:hits]</em>次观看</span>
+                            <span class="nice digg_vodup" id="nice">
+                                <i class="r1"><img src="{maccms:path_tpl}images/r1_03.png"></i>
+                                <span>0</span>
+                            </span>
+                            <span class="poor digg_voddown" id="poor">
+                                <i class="r2">
+                                    <img src="{maccms:path_tpl}images/r2_03.png">
+                                </i>
+                                <span>0</span>
+                            </span>
+                            <span id="likes_msg"style="color:red;"></span>
+                        </div>
+                        <!--
+                        <div class="dz">
+                            <span>采集地址：</span>
+                            <p>{maccms:play from=current}{maccms:url
+                                order=asc}{if-A:[url:num]==1}[url:path]{endif-A}{/maccms:url}{/maccms:play}</p>
+                        </div>
+                        -->
+                    </div>
+                    <div class="gc_vodeo_right">
+                        <div class="ps_3" style="margin-top: 0"></div>
+                        <p class="moreVideo">相关视频</p>
+                        <div class="videoMore">
+                            <ul>
+                                {maccms:vod num=5 type=all by=rnd}
+                                <li><p class="img"><img class="lazy" onerror="this.src='{maccms:path}images/nopic.gif'"
+                                                        src="[vod:pic]" alt="[vod:name]"/><a href="[vod:link]"
+                                                                                             title="[vod:name]"></a></p>
+                                </li>
+                                {/maccms:vod}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--更多视频-->
+        <div class="more-video">
+
+        </div>
+    </div>
+</div>
+<!-- 正文 -->
+
+{maccms:foot}
+</body>
+</html>

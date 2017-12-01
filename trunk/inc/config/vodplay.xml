@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<plays>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<play status="1" sort="200" from="swf" show="Flash文件" des="swf"><tip><![CDATA[无需安装任何插件]]></tip></play>
+	<play status="1" sort="190" from="flv" show="Flv文件" des="flv"><tip><![CDATA[无需安装任何插件]]></tip></play>
+	
+	<play status="1" sort="120" from="real" show="RealPlaer播放器" des="real.cn"><tip><![CDATA[需要电脑安装RealPlayer播放器]]></tip></play>
+	<play status="1" sort="110" from="media" show="MediaPlayer播放器" des="mediaplayer"><tip><![CDATA[无需安装任何插件]]></tip></play>
+	<play status="1" sort="10" from="link" show="外链数据" des="外部网站播放链接"><tip><![CDATA[无需安装任何插件]]></tip></play>
+	<play status="1" sort="490" from="ckplayer" show="ckplayer" des="ckplayer.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+	<play status="1" sort="450" from="m3u8" show="m3u8" des="ckplayer.com"><tip><![CDATA[无需安装任何插件]]></tip></play>
+</plays>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{page:name} -  第{page:now}页 -  {maccms:name}</title>
+<meta name="keywords" content="{page:key}" />
+<meta name="description" content="{page:des}" />
+{maccms:include}
+</div>
+</head>
+<body>
+<header>
+    <div id="navbar">
+		<a href="#" class="menubtn"><span></span><span></span><span></span><span></span></a>
+		<h2 class="sitetitle">专题详情</h2>
+		{maccms:head}
+    </div>
+    <div class="overlay"></div><div class="clear"></div>
+</header>
+<section class="topic">
+	<img src="{page:pic}" title="{page:name}">
+	<div class="tits">
+		<h1>{page:name}</h1>
+		<p>点击：{page:hits} &nbsp;&nbsp;&nbsp;共{page:datacount}部</p>
+	</div>
+	<p>{page:content}</p>
+</section>
+<section class="sm-areas">
+	<span class="conth"><i></i>专题列表</span>
+	<div class="main">
+		<ul>{maccms:vod pagesize=18 topic=current order=desc by=time}
+			<li>
+				<a href="[vod:link]">
+					<div class="psize">
+						<img class="lazy" data-original="[vod:pic]" src="{maccms:path_tpl}images/lazy.jpg" alt="[vod:name]">
+						<label class="title">{if-A:not isN("[vod:remarks]")}[vod:remarks]{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}高清{elseif-A:not isN("[vod:remarks]")and [vod:state]=0}[vod:remarks]{elseif-A:[vod:state]>0}更新至[vod:state]集{endif-A}&nbsp;</label>
+					</div>
+					<p class="pname">[vod:name]</p>
+					<p class="pstarring">[vod:starring]</p>
+				</a>
+			</li>{/maccms:vod}
+		</ul>
+	</div>
+</section>
+<section class="paginations"><div class="pag">{maccms:pages len=10}</div></section>
+{maccms:foot}
+
+</body>
+</html>

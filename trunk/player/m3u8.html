@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>播放器</title>
+</head>
+<body>
+<div id="a1"></div>
+<script type="text/javascript" src="/player/ckplayer/ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript">
+var url = window.parent.frames.MacPlayer.PlayUrl;
+var h = window.parent.frames.MacPlayer.Height;
+var flashvars={
+f:'/player/ckplayer/m3u8.swf', //解析插件地址
+a:url,         //视频地址
+s:4,           //播放模式
+c:0,       //是否读取文本配置,0不是，1是
+p:1,       //是否自动播放 0不是，1是
+v:60,      //默认音量
+e:5,       //播放结束后的动作
+l:'',       //前置广告列表
+r:'',       //前置广告链接地址列表
+t:5,       //前置广告时间列表
+d:'',       //暂停广告列表
+u:'',       //暂停广告链接地址列表
+z:''        //缓冲广告地址
+};
+var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always',wmode:'transparent'};
+CKobject.embedSWF('/player/ckplayer/ckplayer.swf','a1','ckplayer_a1','100%',h,flashvars,params);
+var video=[url+'->video/mp4'];
+var support=['iPad','iPhone','ios','android+false','msie10+false'];
+CKobject.embedHTML5('a1','ckplayer_a1','100%',h,video,flashvars,support);
+//自动播放下一集
+function playerstop(){
+window.parent.frames.MacPlayer.GoNextUrl();
+return false;
+};
+</script>
+</body>
+</html>

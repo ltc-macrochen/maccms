@@ -1,0 +1,12 @@
+<div class="detail_left">
+<ul>
+<li>
+<h3>栏目导航<span></span></h3>
+<ol class="block">
+<li {if-A:{maccms:siteaid}=10}class="select"{endif-A}> <a href="{maccms:path}">首页</a> <span></span> </li>
+{maccms:menu type=1,5,6,7}<li {if-A:[menu:id]={maccms:curvodtypeid}}class="select"{endif-A}><a href="[menu:link]" title="[menu:name]" target="_self">[menu:name]</a><span>[menu:count]</span> </li>{/maccms:menu}
+</ol>
+</li>
+</ul>
+<!--<div><a href="http://520ziyuan.com/index.php?m=label-help.html" target="_blank">站长采集插件</a></div>-->
+</div>

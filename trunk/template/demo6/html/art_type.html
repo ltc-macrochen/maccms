@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{page:name}_第{page:now}页_{maccms:name}</title>
+<meta name="keywords" content="{page:key}" />
+<meta name="description" content="{page:des}" />
+{maccms:include}
+<script type="text/javascript" src="{maccms:path_tpl}js/swiper-3.3.1.min.js" charset="utf-8"></script>
+</head>
+<body>
+<header>
+    <div id="navbar">
+		<a href="#" class="menubtn"><span></span><span></span><span></span><span></span></a>
+		<h2 class="sitetitle">{page:name}</h2>
+		{maccms:head}
+    </div>
+    <div class="overlay"></div><div class="clear"></div>
+</header>
+<style>
+    .arc-nav-div{
+        background: #fff;
+    overflow: hidden;
+    padding-top: 20px;
+    padding-bottom: 10px;}
+    
+    
+    .arc-nav-div li{
+      float: left;
+    width: 33.33333%;
+    text-align: center;
+    }
+    .arc-nav-div li a{
+        display: inline-block;
+    width: 80%;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    border: 1px solid #000000;
+    color: #515151;
+    text-align: center;
+    border-radius: 2.2rem;
+    font-size: .8rem;
+    background: #fff;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    }
+</style>
+<div class="arc-nav-div">
+	<ul>
+                                           {maccms:menu  order=asc type=all table=art}
+		<li {if-A:{maccms:curarttypeid}=[menu:id]}class="on"{endif-A}><a href="[menu:link]" title="[menu:name]">[menu:name]</a></li>{/maccms:menu}
+	</ul>
+</div>
+<section class="big-area">{maccms:art pagesize=16 order=desc by=addtime}
+	<article class="excerpt">
+		<a rel="nofollow" class="focus" href="[art:link]">
+		<img class="lazy thumb" src="{maccms:path_tpl}images/text_active.png"></a>
+		<a class="tit" href="[art:link]" title="[art:name]">[art:name]</a>
+		<p class="meta"><time>[art:time]</time><span class="pv">阅读([art:hits])</span></p>
+		<p class="note">[art:contenttext len=130]</p>
+	</article>{/maccms:art}
+</section>
+<section class="paginations"><div class="pag">{maccms:pages len=10}</div></section>
+<script type="text/javascript" charset="utf-8">
+    var slide = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop: true
+    });
+    if ($(".slide").length) {
+        Islide();
+        $(window).on("resize",
+        function() {
+            Islide()
+        })
+    }
+</script>
+{maccms:foot}
+</body>
+</html>

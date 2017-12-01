@@ -1,0 +1,272 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>[vod:name]-{maccms:name}-新时代的视觉体验</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<meta name="apple-touch-fullscreen" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+ <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="{maccms:path_tpl}css/base.css">
+<link rel="stylesheet" href="{maccms:path_tpl}css/index.css">
+<script src="{maccms:path_tpl}js/jquery.2.1.4.min.js"></script>	
+<script src="{maccms:path_tpl}js/index.js"></script></head>
+<script>var SitePath='{maccms:path}',SiteAid='{maccms:siteaid}',SiteTid='{maccms:sitetid}',SiteId='{maccms:siteid}';</script>
+<script src="{maccms:path}js/jquery.js"></script>
+<script src="{maccms:path}js/jq/jquery.lazyload.js"></script>
+<script src="{maccms:path}js/jq/jquery.autocomplete.js"></script>
+
+<body>
+{maccms:head}
+
+<div class="ps_11"></div><div style="clear:both"></div><div class="video-body gray">
+	<div class="palyContent">
+	<!--视频播放框-->
+	<div class="play" style="text-align:center;position:relative;background-color:#000;">
+		[vod:playerinfo][vod:player]
+	</div>
+
+	<div class="playName">
+		<div class="left">
+			<p class="name">[vod:name]</p>
+			<p class="watch">[vod:hits]次观看</p>
+		</div>
+
+	</div>
+</div>
+
+<div class="promote">
+	<p class="promoteAddress">
+		视频推广链接（您登录账户后（只有在登录后链接才有
+效），可以把此链接发到其他论坛或部落格。当有人访
+问该地址时，就可以赚取色币！）
+		
+	</p>
+
+	<p class="promoteTitle">
+		推广链接
+	</p>
+
+	<p class="url">
+		<input cols="60" name="content" rows="2" id="content" value="http://{maccms:url}[vod:playlink]" readonly="true"/>
+	</p>
+
+	<p class="copy" onclick="jsCopy()">
+		复制地址
+	</p>
+
+	<p class="promoteTitle">
+		注册成功后，推广链接生效，告诉身边朋友，马上获取色币，免费观看视频
+	</p>
+
+</div>
+<!--popup-->
+<div class="shadow" style="display:none;">&nbsp;</div>
+
+<script type="text/javascript"> 
+var playurl = 'ckplayer$$HD高清$http://ginocdn.bybzj.com:8092/guochan/20170722/201707190084/550kb/hls/index.m3u8$m3u8';
+var vid = '12454';
+
+    function jsCopy(){ 
+        var e=document.getElementById("content");//对象是content 
+        e.select(); //选择对象 
+        document.execCommand("Copy"); //执行浏览器复制命令
+       alert("已复制好，可贴粘。"); 
+    } 
+	$(function(){
+		var page = 1;
+		$('#related_videos_more').click(function(){
+			var self = this;
+			page = page + 1;
+			$.post('/video/ajax_related_videos',{'id':vid,'p':page},function(d){
+				if(d){
+					$('.videoMore ul').append(d);
+				}else{
+					$(self).hide();
+				}
+			});
+		});
+		$('#nice').click(function(){
+			setLikesAndDislikes(1,vid);
+		});
+		$('#poor').click(function(){
+			setLikesAndDislikes(2,vid);
+		});
+		/*弹窗关闭与开启*/
+		$("[data-role='close']").click(function(){
+			$(this).parents(".popup").hide();
+			$(".shadow").hide();
+		})	
+		$(".shadow").click(function(){
+			
+			$(this).hide();
+			$(".popup").hide();	
+		})
+	});
+	function setLikesAndDislikes(t,vid){
+		$.post('/video/ajax_likes',{'t':t,'vid':vid},function(d){
+			if(d && d.code == 0){
+				$(".r"+t).hide();
+                $(".g"+t).show();
+			}
+			$('#likes_msg').html(d.msg);
+			setTimeout(function(){
+				$('#likes_msg').html('');
+			},3000);
+		},'json');
+	}
+    //视频URL地址
+    if(playurl.indexOf('$')>0){
+    	playurl = playurl.split('$$')[1];
+    	playurl = playurl.split('$')[1];
+    }
+    $('.dz p').html(playurl);
+	function show_sebi(str){
+		$('.popup #msg').html(str);
+ 	    $('.shadow').show();
+ 		$('.popup').show();
+	}
+
+ 
+</script>
+
+<!--<link rel="stylesheet" href="{maccms:path_tpl}css/popup.css?t=12">-->
+{maccms:foot}
+<script type="text/javascript" src="{maccms:path_tpl}js/jquery.lazyload.min.js"></script>
+<script type="text/javascript">
+
+	function createA(options){
+		var ops = getStyleStr(options);
+		var a = $('<a />');
+		a.attr(ops);
+		return a;
+	}
+	function createImg(options){
+		var ops = getStyleStr(options);
+		var img = $('<img />');
+		img.attr(ops);
+		return img;
+	}
+	function getStyleStr(options){
+		var ops = {style:{}};
+		$.extend(ops,options);
+		var styleStr = '';
+		if(ops && ops.style){
+			$.each(ops.style,function(i,j){
+				styleStr += i+':'+j+';';
+			});
+			ops.style = styleStr;
+		}
+		return ops;
+	}
+	function showAds(){
+		if(ps){
+			$.each(ps,function(i,j){
+				var adsObj = $('.ps_'+i);
+				var fragment = document.createDocumentFragment();
+				if(adsObj && adsObj.length > 0){
+					var style = {};
+					if(j.position != ''){
+						var width = 0;
+						if(j.width.indexOf('%')>=0 || j.width=='auto'){
+							width = j.width;
+						}else{
+							width = j.width+'px';
+						}
+						var height = 0;
+						if(j.height.indexOf('%') >= 0 || j.height =='auto'){
+							height = j.height;
+						}else{
+							height = j.height+'px';
+						}
+						style = {
+							'position':'fixed',
+							'z-index':99999,
+							'width':width,
+							'height':height
+						};
+						if(j.position_top != ''){
+							style.top = (j.position_top.indexOf('%') >= 0) ? j.position_top : j.position_top+'px';
+						}else if(j.position_bottom != ''){
+							style.bottom = (j.position_bottom.indexOf('%') >= 0) ? j.position_bottom : j.position_bottom+'px';
+						}else{
+							style.top = 0;
+						}
+						if(j.position == 'left'){
+							style.left = (j.position_left_right.indexOf('%') >= 0) ? j.position_left_right : j.position_left_right+'px';
+						}else if(j.position == 'right'){
+							style.right = (j.position_left_right.indexOf('%') >= 0) ? j.position_left_right : j.position_left_right+'px';
+						}
+						style.float = j.position;
+						var o = getStyleStr({'style':style});
+						adsObj.attr(o);
+					}
+					var width = adsObj.width();
+					var mcounts = Math.floor(width / j.width);
+					
+					if(j.ads && j.ads.length > 0){
+						$.each(j.ads,function(si,sj){
+							var tmps = sj.margin.split(' ');
+							var tmpsLen = tmps.length;
+							var margin = '';
+							for(var f=0;f<tmpsLen;f++){
+								if(tmps[f].indexOf('%') < 0 && parseInt(tmps[f]) > 0){
+									margin += parseInt(tmps[f])+'px ';
+								}else{
+									margin += tmps[f]+' ';
+								}
+							}
+							var ops = {
+								'display':'block',
+								'float':'left',
+								'margin':margin
+							};
+							if(j.position =='' && si == (mcounts -1)){
+								ops.margin = '10px 0 0 0';
+							}
+							var xa = null;
+							if(sj.isbtn == 1){
+								ops.position = 'relative';
+								var xaops = {'display':'block','position':'absolute','top':'5%','right':'3%','width':'auto','height':'auto','margin':0,'background':'#192332','color':'white','padding':'2px 5px','font-size':'5%'};
+								xa = createA({'style':xaops});
+								xa.html('X');
+								xa.click(function(){
+									$(this).parent().hide();
+									return false;
+								});
+							}
+							var a = createA({'style':ops,'title':sj.name,'href':sj.url,'target':'_blank'});
+							if(xa){
+								a.append(xa);
+							}
+							var imgops = {
+							   'width':(j.width.indexOf('%') >= 0 ) ? '100%' : j.width+'px',
+							   'height':(j.height.indexOf('%')>=0)? '100%' : j.height+'px'
+							};
+							var src = sj.media ? sj.media : sj.relogopic;
+							var img = createImg({'style':imgops,'alt':sj.name,'src':src});
+							a.append(img);
+							fragment.appendChild(a[0]);
+						});
+						adsObj.append(fragment);
+					}
+				}
+			});
+		}
+	}
+$(function(){
+	$.getScript("/ads/data.js?v=3").done(function(r,s){
+		showAds();
+	});
+	$(".ntc-btn").click(function(){
+		$(".notice").hide(500);
+	});
+	$('img.lazy').lazyload();
+});
+</script>
+
+</body>
+</html>

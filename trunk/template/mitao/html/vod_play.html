@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>正在播放 [vod:name] [vod:playname]</title>
+    <meta name="Keywords" content="[vod:name][vod:playname]免费在线观看,[vod:name]剧情介绍,[vod:name]数据海报"/>
+    <meta name="description" content="[vod:name][vod:playname]免费在线观看,[vod:name]剧情介绍,[vod:name]数据海报"/>
+    {maccms:include}
+    <!--<link href="{maccms:path_tpl}css/play_mode2.css" rel="stylesheet" type="text/css"/>-->
+</head>
+<body>
+{maccms:head}
+<div class="wrap container v-play">
+    <!-- top ad -->
+    <div class="money_all">
+        <!--<script type="text/javascript" language="javascript" src="{maccms:path_ads}all-top.js"></script>-->
+    </div>
+    <!-- /top ad -->
+
+    <div class="play-hd">
+        <h5>当前位置：[vod:textlink] [vod:playname]</h5>
+    </div>
+    <div class="play-bd">
+        <div class="l player">
+            <div>[vod:playerinfo][vod:player]</div>
+            <div class="tools">[vod:digg]|[vod:error]|[vod:fav]|[vod:share] <!--<a href="[vod:link]">影片详情</a>--></div>
+        </div>
+        <!--/Player-->
+    </div>
+    <!--/Box-->
+
+    <!-- ad under player -->
+    <div class="box mb">
+        <!--<script type="text/javascript" language="javascript" src="{maccms:path_ads}play902.js"></script>-->
+    </div>
+    <!-- /ad under player -->
+
+    <div class="mb box pbox">
+        <div class="comment-hd">
+            <h5>评论：</h5>
+        </div>
+        <div class="comment-bd">
+            [vod:comment]
+        </div>
+    </div>
+    <!--/Box-->
+
+    <!--猜你喜欢-->
+    <div class="svlist b">
+        <div class="guess-hd">
+            <h5>热门[vod:typename]</h5>
+        </div>
+        <div class="guess-bd ibox-content">
+            {maccms:vod num=8 type=current by=weekhits order=desc}
+                <div class="col-sm-6 col-md-3 col-lg-3 m-col-item">
+                    <a href="/?m=vod-play-id-[vod:id]-src-1-num-1.html">
+                        <div class="thumbnail">
+                            <img src="[vod:pic]" alt="[vod:name]" class="lazy"/>
+                            <div class="caption text-center">
+                                <h5 class="v-list-title">
+                                    <label class="">[新]</label>
+                                    [vod:name]
+                                </h5>
+                                <div class="form-control" style="border:none;">
+                                    <div class="pull-left form-inline">
+                                        <i class="glyphicon glyphicon-time"></i>&nbsp;
+                                        [vod:duration]
+                                    </div>
+                                    <div class="pull-right form-inline">
+                                        <i class="glyphicon glyphicon-eye-open"></i>
+                                        <span>[vod:hits]</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            {/maccms:vod}
+            <!--<ul>-->
+                <!--<li>-->
+                    <!--<h3>-->
+                        <!--<em{if-A:[vod:num]<4} class="n3"{endif-A}>[vod:numfill]</em>-->
+                        <!--<a href="[vod:link]" target="_blank">[vod:name]</a>-->
+                    <!--</h3>-->
+                    <!--<span>{if-A:[vod:state]<1}[vod:remarks]{elseif-A:[vod:state]<1000 and [vod:state]>0}第[vod:state]集{elseif-A:[vod:state]>1000}[vod:state]期{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}大结局{else-A}{endif-A}</span>-->
+                <!--</li>-->
+            <!--</ul>-->
+        </div>
+    </div>
+    <!--/猜你喜欢-->
+
+    <!-- ad bottom -->
+    <div class="money_all">
+        <!--<script type="text/javascript" language="javascript" src="{maccms:path_ads}play903.js"></script>-->
+    </div>
+    <!-- /ad bottom -->
+</div>
+<!--/Wrap-->
+{maccms:foot}
+<!--/Footer-->
+</body>
+</html>

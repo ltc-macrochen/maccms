@@ -1,0 +1,81 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{maccms:path}">{maccms:name}</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <div class="pull-left clearfix">
+                <ul class="nav navbar-nav">
+                    <li role="presentation" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            分类 <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu row">
+                            {maccms:menu type=1,2,3,4}
+                            <li class="col-xs-4 col-lg-3">
+                                <a href="[menu:link]" title="[menu:name]">[menu:name]</a>
+                            </li>
+                            {/maccms:menu}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="pull-right clearfix col-lg-8" style="top: 9px;">
+
+                <div class="col-lg-4 hidden-xs">
+                    <div class="input-group" style="">
+                        <form action="{maccms:link_search_vod}" method="post">
+                            <input type="text" id="wd" name="wd" class="form-control" style="width:140px;"
+                                   onblur="if(this.value==''){ this.value='100万部影片任你搜索';this.style.color='#cfcdcd';}"
+                                   onfocus="if(this.value=='100万部影片任你搜索'){this.value='';this.style.color='';}"
+                                   value="100万部影片任你搜索" />
+                            <span class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                    搜索
+                                </button>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-4 hidden-xs">
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn nav-btn" onclick="addFavorite();return false;">
+                            <i class="glyphicon glyphicon-star-empty"></i>
+                            收藏书签
+                        </button>
+                    </div>
+                    <div class="btn-group" role="group">
+                        <a href="https://www.emoneyspace.com/mitaosex" target="_blank" type="button" class="btn nav-btn">地址发布</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="btn-group" role="group">
+                        <a href="/site/ad" type="button" class="btn nav-btn">广告合作</a>
+                    </div>
+                    <div class="btn-group r" role="group">
+                        <a href="{maccms:path}index.php?m=user-index.html" type="button" class="btn nav-btn">
+                            <!--<i class="glyphicon glyphicon-user"></i>-->
+                            登录
+                        </a>
+                    </div>
+                    <div class="btn-group r" role="group">
+                        <a href="{maccms:path}index.php?m=user-reg.html" type="button" class="btn nav-btn">
+                            注册
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- home-head-end -->

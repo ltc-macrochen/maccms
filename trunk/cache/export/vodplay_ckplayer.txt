@@ -1,0 +1,1 @@
+<status>1</status><sort>490</sort><from>ckplayer</from><show>ckplayer</show><des>ckplayer.com</des><tip>无需安装任何插件</tip><code>﻿MacPlayer.Html = '<iframe width="100%" height="'+MacPlayer.Height+'" src="/player/ckplayer.html" frameborder="0" border="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>';MacPlayer.Show();</code>

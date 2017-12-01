@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>正在播放 [vod:name] [vod:playname] - {maccms:name}</title>
+<meta name="keywords" content="[vod:name]免费在线观看,[vod:name]剧情介绍,[vod:name]百度云下载" />
+<meta name="description" content="{maccms:name}正在为您免费播放[vod:name],[vod:contenttext len=60]" />
+<link href="{maccms:path_tpl}css/pan.css" rel="stylesheet" type="text/css" />
+{maccms:include}
+</head>
+<body>
+<header>
+    <div id="navbar">
+		<a href="javascript:history.go(-1);" class="menuback"><span class="i-return"></span></a>
+		<h2 class="sitetitle">[vod:name] [vod:playname]</h2>
+		<a target="_self" href="{maccms:path}index.php?m=user-index.html" rel="nofollow" class="member">会员中心</a>
+    </div>
+    <div class="overlay"></div><div class="clear"></div>
+</header>
+<div id="player">
+	[vod:playerinfo][vod:player]
+</div>
+<div class="playcon">
+</div>
+		<div class="page-btn">
+	<span>[vod:error] </span>
+	<span><a href="#pl" class="gulesBtn">网友评论</a></span>
+	<span>[vod:userfav]</span>
+	</div>
+
+<section class="playsel">
+	{maccms:play}
+	<span class="playtype"><i></i>[play:show]</span>
+	<div class="xianlu">{maccms:url order=asc}
+		<a rel="nofollow" href="[url:link]" target="_self">[url:name]</a>
+		{/maccms:url}
+	</div>
+		{if-A:[play:urlcount]>15}<span class="zklb" target="_self">↓↓↓展开列表↓↓↓</span>{endif-A}
+	{/maccms:play}
+</section>
+<section id="xg" class="sm-areas">
+	<span class="conth"><i></i>相关推荐</span>
+	<div class="main">
+		<ul>{maccms:vod num=6 type=current order=desc by=time}
+			<li>
+				<a href="[vod:link]">
+					<div class="psize">
+						<img class="lazy" data-original="[vod:pic]" src="{maccms:path_tpl}images/lazy.jpg" alt="[vod:name]">
+						<label class="title">{if-A:not isN("[vod:remarks]")}[vod:remarks]{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}高清{endif-A}&nbsp;</label>
+					</div>
+					<p class="pname">[vod:name]</p>
+					<p class="pstarring">[vod:starring]</p>
+				</a>
+			</li>{/maccms:vod}
+		</ul>
+	</div>
+</section>
+<section id="pl" class="sm-areas">
+	<span class="conth"><i></i>网友评论</span>
+	<div class="ds-thread" data-thread-key="[vod:id]" data-title="[vod:name]" data-url="[vod:link]"></div>
+</section>
+<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zeilahaokan"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+{maccms:foot}
+</body>
+</html>

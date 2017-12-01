@@ -1,0 +1,17 @@
+    <a target="_self" href="{maccms:path}index.php?m=user-index.html" rel="nofollow" class="member">会员中心</a>
+		<div id="hamburgermenu">
+			<ul class="dhgl">
+				<li id="item-search">
+				<form action="{maccms:link_search_vod}" method="post" target="_blank" autocomplete="off">
+					<input type="search" id="wd" name="wd" autocomplete="off" autovalue="请输入片名或主演" placeholder="请输入片名或主演" class="searchInput">
+					<input type="submit" id="searchbutton" class="searchbutton" value="">
+				</form>
+				</li>
+				<li id="item-index"><a href="/">首页</a></li>{maccms:menu type=all order=asc table=vod}
+				<li id="category-[menu:num]"><a href="[menu:link]">[menu:name]</a></li>{/maccms:menu}
+                                 {maccms:matrix type=1,2 table=art} 
+                               <li id="category-[matrix:num]"><a href="[matrix:link]">[matrix:name]</a></li>{/maccms:matrix}
+				<li id="item-topic"><a href="{maccms:link_topic_vod}">专题</a></li>
+				<div class="clear"></div>
+			</ul>
+		</div>

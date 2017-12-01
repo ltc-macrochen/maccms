@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>精彩专题_第{page:now}页_{maccms:name}</title>
+<meta name="keywords" content="明星合集,视频专辑,精彩专题,电影全集" />
+<meta name="description" content="{maccms:name}不定期为影迷们推出新的电影专题及视频专辑,来满足不同爱好的电影者们.这里介绍最经典的电影全集,希望大家喜欢！" />
+{maccms:include}
+</head>
+<body>
+<header>
+    <div id="navbar">
+		<a href="#" class="menubtn"><span></span><span></span><span></span><span></span></a>
+		<h2 class="sitetitle">专题汇总</h2>
+		{maccms:head}
+    </div>
+    <div class="overlay"></div><div class="clear"></div>
+</header>
+<section class="big-area">{maccms:topic pagesize=18 order=desc by=time}
+	<article class="excerpt">
+		<a rel="nofollow" class="focus" href="[topic:link]"><img class="lazy thumb" data-original="[topic:pic]" src="{maccms:path_tpl}images/lazy.jpg"></a>
+		<a class="tit" href="[topic:link]" title="[topic:name]">[topic:name]</a>
+		<p class="meta"><time>[topic:time]</time><span class="pv">阅读([topic:hits])</span></p>
+		<p class="note">[topic:contenttext len=130]</p>
+	</article>{/maccms:topic}
+</section>
+<section class="paginations"><div class="pag">{maccms:pages len=10}</div></section>
+{maccms:foot}
+</body>
+</html>

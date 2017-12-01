@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>新闻中心首页_{maccms:name}</title>
+<meta name="keywords" content="新闻,时事,时政,国际,国内,社会,法治,聚焦,评论,文化,教育,新视点,深度,网评,专题,环球,传播,论坛,图片,军事,焦点,排行,环保,校园,法治,奇闻,真情" />
+<meta name="description" content="新闻中心是{maccms:name}最重要的频道之一,24小时滚动报道国内、国际及社会新闻。每日编发新闻数以万计。包括即日的国内外不同类型的新闻与评论,人物专题,图库。" />
+{maccms:include}
+<script type="text/javascript" src="http://{maccms:url}{maccms:path_tpl}js/swiper-3.3.1.min.js" charset="utf-8"></script>
+</head>
+<body>
+<header>
+    <div id="navbar">
+		<a href="#" class="menubtn"><span></span><span></span><span></span><span></span></a>
+		<h2 class="sitetitle">文章中心</h2>
+		{maccms:head}
+    </div>
+    <div class="overlay"></div><div class="clear"></div>
+</header>
+<section id="slide" class="slide">
+	<div class="resize">
+		<div class="swiper-container">
+			<ul class="swiper-wrapper">{maccms:art num=5 order=desc by=time level=5 type=current}
+				<li class="swiper-slide resize">
+					<a class="resize" href="http://{maccms:url}[art:link]" title="[art:name]">
+						<img class="resize" alt="[art:name]" src="[art:pic]">
+						<p>[art:name]</p>
+						<span class="sBg"></span>
+					</a>
+				</li>{/maccms:art}
+			</ul>
+			<div class="pagination"><div class="swiper-pagination"></div></div>
+		</div>
+	</div>
+</section>
+<section class="menuNavList">
+	<ul>
+		<li {if-A:{maccms:siteaid}=20}class="on"{endif-A}><a href="http://{maccms:url}{maccms:link_index_art}">全部</a></li>{maccms:menu parent=0 order=asc table=art}
+		<li {if-A:{maccms:curarttypeid}=[menu:id]}class="on"{endif-A}><a href="http://{maccms:url}[menu:link]" title="[menu:name]">[menu:name]</a></li>{/maccms:menu}
+	</ul>
+</section>
+<section class="big-area">{maccms:art num=10 order=desc by=time type=3,4,5,6,7,8,9,10,11}
+	<article class="excerpt">
+		<a rel="nofollow" class="focus" href="http://{maccms:url}[art:link]"><img class="lazy thumb" data-original="[art:pic]" src="http://{maccms:url}{maccms:path_tpl}images/lazy.jpg"></a>
+		<a class="tit" href="[art:link]" title="[art:name]">[art:name]</a>
+		<p class="meta"><time>&nbsp;&nbsp;[art:time]</time><span class="pv"><a  href="http://{maccms:url}[art:link]">【点击阅读】</a>([art:hits])</span></p>
+
+	</article>{/maccms:art}
+</section>
+<section class="paginations"><div class="pag">{maccms:pages len=10}</div></section>
+<script type="text/javascript" charset="utf-8">
+    var slide = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop: true
+    });
+    if ($(".slide").length) {
+        Islide();
+        $(window).on("resize",
+        function() {
+            Islide()
+        })
+    }
+</script>
+{maccms:foot}
+</body>
+</html>

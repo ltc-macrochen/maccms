@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{page:key}-{maccms:name}</title>
+<meta name="keywords" content="{page:key},{maccms:name}" />
+<meta name="description" content="{page:key},{maccms:name}" />
+{maccms:include}
+</head>
+<body>
+{maccms:head}
+
+<!-- 正文 -->
+<div class="detail">
+<div class="width1200">
+{maccms:load menu.html}
+<div class="detail_right">
+<div class="detail_right_title ps_1" ></div>
+<div style="clear:both;"></div>
+<div class="detail_right_title ps_2" ></div>
+<div class="detail_right_title ps_9" ></div>
+<div class="detail_right_title ps_7" ></div>
+<div class="detail_right_title ps_8" ></div>
+<div class="detail_right_tab">
+<!-- 首页 -->
+<div class="detail_tab detail_tab2">
+<div class="detail_right_div">
+<h3> <span>当前位置：搜索 <strong style="color:#FF0000">{page:key}</strong> 的结果共 <strong style="color:#FF0000">{page:datacount}</strong> 条</span> </h3>
+<ul>
+{maccms:vod pagesize=20 order=desc by=time}
+<li><p class="img"><img class="lazy" onerror="this.src='{maccms:path}images/nopic.gif'" src="[vod:pic]" alt="[vod:name]"/><a href="[vod:link]" title="[vod:name]"></a></p><p>[vod:name]</p><p><span></span><span></span><span></span><span></span><span></span> </p><p> <i>[vod:time]</i> <strong>[vod:hits] 观看</strong> </p></li>{/maccms:vod}
+</ul>
+<ul class="nextPage">
+{maccms:pages len=6}
+</ul>
+</div>
+</div>
+<!-- 首页 -->
+</div>
+</div>
+</div>
+</div>
+<!-- 正文 -->
+
+{maccms:foot}
+</body>
+</html>

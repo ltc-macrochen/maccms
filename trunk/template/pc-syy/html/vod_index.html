@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{maccms:name}</title>
+<meta name="keywords" content="{maccms:keywords}" />
+<meta name="description" content="{maccms:description}" />
+{maccms:include}
+</head>
+<body>
+{maccms:head}
+
+<!-- 正文 -->
+<div class="detail">
+<div class="width1200">
+{maccms:load menu.html}
+<div class="detail_right">
+<div class="detail_right_title ps_1" ></div>
+<div style="clear:both;"></div>
+<div class="detail_right_title ps_2" ></div>
+<div class="detail_right_title ps_9" ></div>
+<div class="detail_right_title ps_7" ></div>
+<div class="detail_right_title ps_8" ></div>
+<div class="detail_right_tab">
+<!-- 首页 -->
+<div class="detail_tab detail_tab2">
+<div class="detail_right_div">
+<h3> <span>最新更新</span> </h3>
+<ul>
+{maccms:vod pagesize=32 type=all order=desc by=time}
+<li><p class="img"> <img class="lazy" onerror="this.src='{maccms:path}images/nopic.gif'" src="[vod:pic]" alt="[vod:name]"/><a href="[vod:link]" title="[vod:name]"></a></p><p>[vod:name]</p><p><span></span><span></span><span></span><span></span><span></span> </p><p> <i>[vod:time]</i> <strong>[vod:hits] 观看</strong> </p></li>{/maccms:vod}
+</ul>
+</div>
+</div>
+<!-- 首页 -->
+</div>
+</div>
+<div style="clear:both;"></div>
+</div>
+</div>
+<!-- 正文 -->
+
+<!--友情链接-->
+<div class="width1200 flink mb b">
+    <div class="content-hd">
+        <h4>友情链接</h4>
+    </div>
+    <div class="content-bd">
+        <ul>
+            {maccms:link type=font}
+            <li><a href="[link:link]" target="_blank">[link:name]</a></li>
+            {/maccms:link}
+        </ul>
+    </div>
+</div>
+
+{maccms:foot}
+</body>
+</html>

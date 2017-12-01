@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>{maccms:name}-日夜撸_噜噜色_撸女神_哥哥撸_夜夜撸_撸撸更健康</title>
+<meta name="keywords" content="{maccms:keywords}" />
+<meta name="description" content="{maccms:description}" />
+{maccms:include}
+<script type="text/javascript" src="http://{maccms:url}{maccms:path_tpl}js/swiper-3.3.1.min.js" charset="utf-8"></script>
+</head>
+<body>
+<header>
+    <div id="navbar">
+		<a href="#" class="menubtn"><span></span><span></span><span></span><span></span></a>
+		<h2 class="sitetitle">{maccms:name}</h2>
+		{maccms:head}
+    </div>
+    <div class="overlay"></div><div class="clear"></div>
+</header>
+
+
+<section class="menuNavList1 mod0">
+	<ul>{maccms:menu parent=1 order=asc}
+		<li><a href="http://{maccms:url}[menu:link]" title="[menu:name]">[menu:name]</a></li>{if-A:[menu:num]=4 or [menu:num]=8 or [menu:num]=12 or [menu:num]=16 or [menu:num]=20}</ul>
+	
+	<ul>{endif-A}{/maccms:menu}<li><a href="http://{maccms:url}/?m=art-type-id-1.html" >激情图片</a></li><li><a href="http://{maccms:url}/?m=art-type-id-2.html" >情色小说</a></li></ul>
+
+</section>
+<section class="htype">
+
+	<a href="http://{maccms:url}/?m=art-type-id-1.html"><div class="hsize"><img src="{maccms:path_tpl}images/menu_1.png"></div></a>	
+	<a href="http://{maccms:url}/?m=art-type-id-2.html"><div class="hsize"><img src="{maccms:path_tpl}images/menu_2.png"></div></a> 
+      
+</section>
+<section class="ggao"><a rel="nofollow" href="http://{maccms:url}/wechat/weixin.html">公告：老司机不迷路防走丢...<br>点击关注公众号</a></section>
+{maccms:matrix type=auto table=vod}
+<section class="big-area">
+	<div class="htit"><font color="#191970">[matrix:name]</font></div>
+	<div class="main">
+		<ul>{maccms:vod num=6 type=[matrix:id] order=desc by=time}
+			<li>
+				<a href="http://{maccms:url}[vod:link]">
+					<div class="psize">
+						<img class="lazy" data-original="[vod:pic]" src="http://{maccms:url}{maccms:path_tpl}images/lazy.jpg" alt="[vod:name]">
+						<label class="title">{if-A:not isN("[vod:remarks]")}[vod:remarks]{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}高清{endif-A}&nbsp;</label>
+					</div>
+					<p class="pname">[vod:name]</p>
+					<p class="pstarring">[vod:starring]</p>
+				</a>
+			</li>{/maccms:vod}
+		</ul>
+	</div>
+	<div class="hmore"><a href="http://{maccms:url}[matrix:link]">更多[matrix:name]</a></div>
+</section>{/maccms:matrix}
+<div class="clear"></div>
+<script type="text/javascript" charset="utf-8">
+    var slide = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        loop: true
+    });
+    if ($(".slide").length) {
+        Islide();
+        $(window).on("resize",
+        function() {
+            Islide()
+        })
+    }
+</script>
+{maccms:foot}
+</body>
+</html>

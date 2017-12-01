@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<title>《[vod:name]》百度影音电影-[vod:remarks]下载-[vod:from]在线观看 - [vod:typename] - {maccms:name}</title>
+<meta name="keywords" content="《[vod:name]》高清下载,《[vod:name]》在线观看,《[vod:name]》百度影音" />
+<meta name="description" content="[vod:name]剧情:[vod:contenttext len=60]" />
+{maccms:include}
+</head>
+<body>
+<header>
+    <div id="navbar">
+		<a href="#" class="menubtn"><span></span><span></span><span></span><span></span></a>
+		<h2 class="sitetitle">影片详情</h2>
+		{maccms:head}
+    </div>
+    <div class="overlay"></div><div class="clear"></div>
+</header>
+<section class="mod-detail">
+	<div class="mod-detail-c">
+		<div class="page-hd">
+			<a href="[vod:link]" title="[vod:name]"><img src="[vod:pic]" alt="[vod:name]"></a>
+		</div>
+		<div class="page-bd">
+			<h1 class="title">
+				<a href="[vod:link]" title="[vod:name]">[vod:name]</a>
+			</h1>
+			<div class="desc_item">
+				<span>主演:&nbsp;</span>[vod:starringlink]
+			</div>
+			<div class="desc_item">
+				<span>导演:&nbsp;</span>{if-A:isN("[vod:directedlink]")}未知{else-A}[vod:directedlink]{endif-A}
+			</div>
+			<div class="desc_item">
+				<span>类型:&nbsp;</span><a target="_blank" href="[vod:typelink]">[vod:typename]</a>&nbsp;&nbsp;[vod:classlink]
+			</div>
+			<div class="desc_item">
+				<span>年代:&nbsp;</span>[vod:yearlink]<span>&nbsp;&nbsp;状态:&nbsp;</span>{if-A:not isN("[vod:remarks]")}[vod:remarks]{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}高清{elseif-A:not isN("[vod:remarks]")and [vod:state]=0}[vod:remarks]{elseif-A:[vod:state]>0}更新至[vod:state]集{endif-A}
+			</div>
+		</div>
+	</div>
+	<div class="page-btn">
+	<span><a href="[vod:playlink]" target="_self" class="greenBtn" rel="nofollow">立即播放</a></span>
+	<span><a href="#pl" class="gulesBtn">网友评论</a></span>
+	<span>[vod:userfav]</span>
+	</div>
+</section>
+<section class="playsel">
+	{maccms:play}
+	<span class="playtype"><i></i>[play:show]</span>
+	<div class="xianlu">{maccms:url order=asc}
+		<a rel="nofollow" href="[url:link]" target="_self">[url:name]</a>
+		{/maccms:url}
+	</div>
+		{if-A:[play:urlcount]>15}<span class="zklb" target="_self">↓↓↓展开列表↓↓↓</span>{endif-A}
+	{/maccms:play}
+</section>
+<section id="jq" class="sm-areas">
+	<span class="conth"><i></i>剧情介绍</span>
+	<div class="cont">[vod:content]</div>
+</section>
+<section id="xg" class="sm-areas">
+	<span class="conth"><i></i>相关推荐</span>
+	<div class="main">
+		<ul>{maccms:vod num=6 type=current order=desc by=time}
+			<li>
+				<a href="[vod:link]">
+					<div class="psize">
+						<img class="lazy" data-original="[vod:pic]" src="{maccms:path_tpl}images/lazy.jpg" alt="[vod:name]">
+						<label class="title">{if-A:not isN("[vod:remarks]")}[vod:remarks]{elseif-A:[vod:state]=0 and "[vod:remarks]"=""}高清{elseif-A:not isN("[vod:remarks]")and [vod:state]=0}[vod:remarks]{elseif-A:[vod:state]>0}更新至[vod:state]集{endif-A}&nbsp;</label>
+					</div>
+					<p class="pname">[vod:name]</p>
+					<p class="pstarring">[vod:starring]</p>
+				</a>
+			</li>{/maccms:vod}
+		</ul>
+	</div>
+</section>
+<section id="pl" class="sm-areas">
+	<span class="conth"><i></i>网友评论</span>
+	<div class="ds-thread" data-thread-key="[vod:id]" data-title="[vod:name]" data-url="[vod:link]"></div>
+</section>
+<script type="text/javascript">
+	var duoshuoQuery = {short_name:"zeilahaokan"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+</script>
+<div class="clear"></div>
+{maccms:foot}
+</body>
+</html>
